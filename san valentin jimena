@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín para Jimena</title>
+    <style>
+        body {
+            background-color: #ffe6e6;
+            font-family: 'Cursive', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        h1 {
+            text-align: center;
+            color: #d50000;
+            font-size: 3em;
+            margin-top: 50px;
+        }
+        .message {
+            text-align: center;
+            font-size: 1.5em;
+            color: #333;
+            display: none;
+            margin-top: 30px;
+        }
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #ff66b2;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: float 3s infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-100px) rotate(45deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Jimena, ¿quieres ser mi San Valentín?</h1>
+    <div class="message" id="message">
+        <p>¡Te amo mucho, Jimena! Eres todo para mí. ❤️</p>
+    </div>
+
+    <audio class="music-player" controls autoplay loop>
+        <source src="tu-musica-romantica.mp3" type="audio/mp3">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+    <script>
+        // Mostrar mensaje al hacer clic
+        document.body.addEventListener("click", function() {
+            document.getElementById("message").style.display = "block";
+        });
+
+        // Crear corazones flotantes
+        setInterval(function() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.animationDuration = `${Math.random() * 2 + 2}s`;
+            document.body.appendChild(heart);
+            
+            // Eliminar los corazones después de un tiempo
+            setTimeout(function() {
+                heart.remove();
+            }, 3000);
+        }, 500);
+    </script>
+</body>
+</html>
